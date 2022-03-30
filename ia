@@ -151,7 +151,7 @@ h1 small {
     async function predict() {
         // predict can take in an image, video or canvas html element
         //const prediction = await model.predict(webcam.canvas);
-        var image = document.getElementById('imageUpload')
+        var image = document.getElementById('imagePreview')
         const prediction = await model.predict(image, false);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
@@ -170,7 +170,7 @@ h1 small {
             <label for="imageUpload"></label>
         </div>
         <div class="avatar-preview">
-            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                <img src="http://i.pravatar.cc/500?img=7 " id="imagePreview">
             </div>
         </div>
     </div>
@@ -184,7 +184,7 @@ h1 small {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').attr('src', e.target.result);
             $('#imagePreview').hide();
             $('#imagePreview').fadeIn(650);
         }
